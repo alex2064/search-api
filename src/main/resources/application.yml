@@ -1,1 +1,28 @@
-
+spring:
+  application:
+    name: search-api
+  redis:    host: localhost
+    port: 6379
+  profiles:
+    active: local
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+server:
+  port: 8080
+springdoc:
+  version: '@project.version@'
+  api-docs:
+    path: /api-docs
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    path: /
+    disable-swagger-default-url: true
+    display-query-params-without-oauth2: true
+    doc-expansion: none
+    default-models-expand-depth: -1
+  paths-to-match:
+    - /api/**
