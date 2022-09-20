@@ -19,16 +19,18 @@ public class BlogController {
 	
 	private final BlogService blogService;
 	
+	
 	@GetMapping("")
-	public String select(@RequestParam(required = true) String query
-								, @RequestParam(required = false, defaultValue = "accuracy") String sort
-								, @RequestParam(required = false, defaultValue = "1") int page
-								, @RequestParam(required = false, defaultValue = "10") int size){
+	public String select(@RequestParam String query
+							, @RequestParam(required = false, defaultValue = "accuracy") String sort	// accuracy, recency
+							, @RequestParam(required = false, defaultValue = "1") int page				// 1~50
+							, @RequestParam(required = false, defaultValue = "10") int size){			// 1~50
 
-		String result = blogService.select(query, sort, page, size);
+		String result = blogService.selectKakao(query, sort, page, size);
 		
 		return result;
 	}
+	
 	
 	@GetMapping("/rank")
 	public List<Word> selectWordRank(){
